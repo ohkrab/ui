@@ -22,11 +22,25 @@ function App() {
                         {set.migrations.map((m) => (
                             <Segment.Group key={m.refName}>
                                 <Segment>
-                                    <Label color='teal'>{set.schema}.</Label>
-                                    <Label color="grey" image>
-                                        {m.refName}
+                                    <Label>
+                                        schema:
+                                        <Label.Detail>
+                                            {set.schema}
+                                        </Label.Detail>
+                                    </Label>
+                                    <Label>
+                                        refName:
+                                        <Label.Detail>{m.refName}</Label.Detail>
+                                    </Label>
+                                    <Label>
+                                        version:
                                         <Label.Detail>{m.version}</Label.Detail>
                                     </Label>
+                                    {!m.transaction && (
+                                        <Label color='red'>
+                                            no transaction
+                                        </Label>
+                                    )}
                                 </Segment>
                                 <Segment.Group>
                                     <Segment>
